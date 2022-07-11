@@ -1,11 +1,10 @@
-https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-
 var searchbutton = $("#search-button");
 var apiKey = "d899707429dae12637678613a5874634";
 var searchinput = "";
 var todayTemp = $("#todaytemp");
 var todayWind = $("#todaywind");
 var todayHumidity = $("#todayhumidity");
+var todayUv = $("todayuvindex");
 var currentDate = moment().format("M/D/YYYY");
 var cityName = "";
 var dailyDivs = [$("#daily-1div"), $("#daily-2div"), $("#daily-3div"), $("#daily-4div"), $("#daily-5div")];
@@ -42,6 +41,7 @@ function getUserLocation (searchinput){
     fetch(apiUrl).then(function(response){
         if (response.ok){
             response.json().then(function(data){
+            console.log(data);
               // Gets the lon and lat of the location
               var locationLat = data[0].lat;
               var locationLon = data[0].lon;
@@ -50,7 +50,7 @@ function getUserLocation (searchinput){
               var latString = locationLat.toString();
               var lonString = locationLon.toString();
               // Call function to get values
-              getLocationWeather(latString, lonString);  
+              getWeatherLocation(latString, lonString);  
             });
         } else {
             alert("Location Not Found");
@@ -69,15 +69,18 @@ function getWeatherLocation (lat, lon){
                     currentTempEl.text(data.current.temp);
                 var currentWindEl = $("#todaywind");
                     currentWindEl.text(data.current.wind_speed);
-                var currentHumidity = $("#todayhumidity");
-                    currentHumidity.text(data.current.humidity);
+                var currentHumidityEl = $("#todayhumidity");
+                    currentHumidityEl.text(data.current.humidity);
+                var currentUvEl = $("todayuvindex");
+                    currentUvEl.text(data.current.uv);
 
         for ( var i = 0; i < dailyDivs.length; i ++){
             var humanDateFormat = new Date(data.daily[i + 1].dt * 1000).toLocaleDateString("en-US");
-            dailyDivs[i].find("").text(humanDateFormat);
+            dailyDivs[i].find(".dateText").text(humanDateFormat);
             dailyDivs[i].find(".tempText").text(data.daily[i + 1].temp.day)
-            dailyDivs[i].find(".tempText").text(data.daily[i + 1]._windspeed.day)
-            dailyDivs[i].find(".tempText").text(data.daily[i + 1].humidity.day)
+            dailyDivs[i].find(".windText").text(data.daily[i + 1].wind_speed)
+            dailyDivs[i].find(".humidityText").text(data.daily[i + 1].humidity)
+            dailyDivs[i].find(".uvText").text(data.daily[i + 1].uvi)
 
         }
 
@@ -85,6 +88,6 @@ function getWeatherLocation (lat, lon){
             })
         }
     })
-}
+};
 
 $("#city-list").on("click", "list-group-item", getSavedCityWeather)
