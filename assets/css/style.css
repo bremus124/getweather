@@ -1,0 +1,67 @@
+#fiveDayForecast
+{
+  width: 125px;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.city
+{
+  cursor: pointer;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    display:flex;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
+
+#todayuvindex {
+    border-radius: 3px;
+    width: 100px;
+    height: 20px;
+}
+
+.daily-div {
+    background-color: blue;
+    width: 150px;
+    height: 350x;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    padding-left: 20px;
+}
+
+.list-group-item {
+    background-color: rgb(128, 128, 128);
+    width:200px;  
+    margin-right: 50px;
+    
+}
+
+#city-list{
+    margin-right: 200px;
+    padding-right: 50px;
+
+}
+
+#past-search{
+    width:250px;
+}

@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather Now</title>
 </head>
+
 <body>
     <body class="container">
 
-  <div class="row text-center bg-primary text-white">
+  <div class="text-center bg-primary text-white">
     <h1>Weather Dashboard</h1>
   </div>
 
@@ -19,74 +20,83 @@
       
       <div class="column col-3">
         <div>
-          <label class="text-primary">Search for a City:</label>
+         <h2> <label class="text-dark ">Search for a City:</label> </h2>
           <input class="form-control my-2 text-primary" type="search" placeholder="Search" id="inputcity">
           <button class="btn btn-outline-primary my-2" style="width: 100%" type="submit" id="search-button">Enter City</button>
         </div>
-
-        <button class="btn btn-outline-primary my-2" style="width: 100%" type="submit" id="clear-button">Clear History</button>
         
-        <div class="border-top border-primary" id="past-search">
+        <div id="past-search">
             <ul id="city-list"> </ul>
-        
         </div>
 
-      </div>
+    </div>
 
-      <div class="column col-9">
-        <div class="row" id="currentConditions">
-            <h2> City:<span id="cityname"></span> </h2>
-            <p> <span id = "todaytemp"> </span></p>
-            <p> <span id = "todaywind"> </span></p>
-            <p> <span id = "todayhumidity"> </span></p>
-            <p> <span id = "todayuvindex"> </span></p>
+        <div class="column col-9"> 
+            <div class="row border border-dark" id="currentConditions">
+                <h2> <span id="cityname"> </span> </h2>
+                <img id="weathericon" src="">
+                    <p> Temp: <span id = "todaytemp"> </span></p>
+                    <p> Wind: <span id = "todaywind"> </span></p>
+                    <p> Humidity: <span id = "todayhumidity"> </span></p>
+                    <p id="uvi"> UV Index: <span id = "todayuvindex"> </span></p>
 
-        </div>
+            </div>
         
-        
-        <div class="row" id="fiveDayForecast"></div>
-            <div class="d-flex flex-row flex-wrap justify-content-between" id="daily-1div">
-                <h3> id = "day-1" class="dateText" </h3>
+            
+            <h2> 5-Day Forcast: </h2>
+            <div class="row" id="fivedayforcast">
+            
+       
+             
+        <div class="daily-div" id="daily-1div">
+                <h3  id = "day-1" class="dateText"></h3>  
+                <img id="weathericon1" src="">
                     <p> Temp:<span class="tempText" id = "day-1-temp"> </span></p>
                     <p> Wind: <span class = "windText" id= "day-1-wind"> </span></p>
                     <p> Hum: <span class = "humidityText" id= "day-1-humidity"> <span></p>
                     <p> UV: <span class = "uvText" id= "day-1-uv"> <span></p>
-            </div>
+        </div>
 
-            <div class="d-flex flex-row flex-wrap justify-content-between" id="daily-2div">
-                <h3> id = "day-2" class="dateText" </h3>
+        <div class="daily-div" id="daily-2div">
+                <h3 id = "day-2" class="dateText">  </h3>
+                <img id="weathericon2" src="">
                     <p> Temp:<span class="tempText" id = "day-2-temp"> </span></p>
                     <p> Wind: <span class = "windText" id= "day-2-wind"> </span></p>
                     <p> Hum: <span class = "humidityText" id= "day-2-humidity"> <span></p>
                     <p> UV: <span class = "uvText" id= "day-2-uv"> <span></p>
-            </div>
+        </div>
             
-            <div class="d-flex flex-row flex-wrap justify-content-between" id="daily-3div">
-                <h3> id = "day-3" class="dateText" </h3>
+        <div class="daily-div" id="daily-3div">
+                <h3 id = "day-3" class="dateText"> </h3>
+                <img id="weathericon3" src="">
                     <p> Temp:<span class="tempText" id = "day-3-temp"> </span></p>
                     <p> Wind: <span class = "windText" id= "day-3-wind"> </span></p>
                     <p> Hum: <span class = "humidityText" id= "day-3-humidity"> <span></p>
                     <p> UV: <span class = "uvText" id= "day-3-uv"> <span></p>
-            </div>
+        </div>
             
-            <div class="d-flex flex-row flex-wrap justify-content-between" id="daily-4div">
-                <h3> id = "day-4" class="dateText" </h3>
+        <div class="daily-div" id="daily-4div">
+                <h3  id = "day-4" class="dateText"> </h3>
+                <img id="weathericon4" src="">
                     <p> Temp:<span class="tempText" id = "day-4-temp"> </span></p>
                     <p> Wind: <span class = "windText" id= "day-4-wind"> </span></p>
                     <p> Hum: <span class = "humidityText" id= "day-4-humidity"> <span></p>
                     <p> UV: <span class = "uvText" id= "day-4-uv"> <span></p>
-            </div>
+        </div>
        
-            <div class="d-flex flex-row flex-wrap justify-content-between" id="daily-5div">
-                <h3> id = "day-5" class="dateText" </h3>
-                <p> Temp:<span class="tempText" id = "day-5-temp"> </span></p>
-                <p> Wind: <span class = "windText" id= "day-5-wind"> </span></p>
-                <p> Hum: <span class = "humidityText" id= "day-5-humidity"> <span></p>
-                <p> UV: <span class = "uvText" id= "day-5-uv"> <span></p>
-            </div>
-      </div>
+        <div class="daily-div" id="daily-5div">
+                <h3  id = "day-5" class="dateText"> </h3>
+                <img id="weathericon5" src="">
+                    <p> Temp:<span class="tempText" id = "day-5-temp"> </span></p>
+                    <p> Wind: <span class = "windText" id= "day-5-wind"> </span></p>
+                    <p> Hum: <span class = "humidityText" id= "day-5-humidity"> <span></p>
+                    <p> UV: <span class = "uvText" id= "day-5-uv"> <span></p>
+        </div>
+    </div>
+     </div>
+      
 
-  </div>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 <script src="./assets/js/script.js"></script>
